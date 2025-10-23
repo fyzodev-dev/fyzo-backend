@@ -3,7 +3,8 @@ services:
     name: fyzo-backend
     env: node
     plan: free
-    buildCommand: yarn install
+    rootDir: .
+    buildCommand: npm install
     startCommand: node server.js
     envVars:
       - key: NODE_ENV
