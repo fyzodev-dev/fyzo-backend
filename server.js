@@ -6,8 +6,12 @@ const morgan = require('morgan');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const mongoSanitize = require('express-mongo-sanitize');
+const http = require('http');
+const socketIO = require('socket.io');
 // const rateLimit = require('express-rate-limit');
 const connectDB = require('./src/config/database');
+const Chat = require('./src/models/Chat');
+const Message = require('./src/models/Message');
 
 // Load env
 dotenv.config();
@@ -17,6 +21,18 @@ connectDB();
 
 const app = express();
 const server = http.createServer(app);
+
+// Socket.IO Configuration
+const io = socketIO(server, {
+  cors: {
+    origin: true,
+    credentials: true,
+  },
+  pingTimeout: 60000,
+});
+
+// Make io accessible to routes
+app.set('io', io);
 
 // Security & hygiene
 app.use(helmet());
@@ -196,9 +212,9 @@ io.on('connection', (socket) => {
   });
 });
 
-// Start server – bind to 0.0.0.0 and Render's PORT
+// Start server
 const PORT = process.env.PORT || 5000;
-const server = app.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`
     ╔════════════════════════════════════════╗
     ║   FYZO Backend Server Started          ║
