@@ -7,7 +7,7 @@ const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const mongoSanitize = require('express-mongo-sanitize');
 // const rateLimit = require('express-rate-limit');
-const connectDB = require('./config/database');
+const connectDB = require('./src/config/database');
 
 // Load environment variables
 dotenv.config();
@@ -63,11 +63,11 @@ app.get('/health', (req, res) => {
 });
 
 // API Routes
-app.use('/api/v1/auth', require('./routes/authRoutes'));
-app.use('/api/v1/user', require('./routes/userRoutes'));
-app.use('/api/v1/creator', require('./routes/creatorRoutes'));
-app.use('/api/v1/categories', require('./routes/categories'));
-app.use('/api/v1/favorites', require('./routes/favoriteRoutes'));
+app.use('/api/v1/auth', require('./src/routes/authRoutes'));
+app.use('/api/v1/user', require('./src/routes/userRoutes'));
+app.use('/api/v1/creator', require('./src/routes/creatorRoutes'));
+app.use('/api/v1/categories', require('./src/routes/categories'));
+app.use('/api/v1/favorites', require('./src/routes/favoriteRoutes'));
 // app.use('/api/v1/courses', require('./routes/courseRoutes'));
 // app.use('/api/v1/bookings', require('./routes/bookingRoutes'));
 
