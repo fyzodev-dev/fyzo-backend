@@ -1,0 +1,12 @@
+MongoDB:
+
+Username:fyzodev_db_user
+Password: kjoiDdWSg0KLLR1D
+
+uri: mongodb+srv://fyzodev_db_user:kjoiDdWSg0KLLR1D@fyzo.fanu9nk.mongodb.net/?retryWrites=true&w=majority&appName=fyzo
+
+Clodinary:
+
+Cloudinary Cloud Name: your-cloud-name
+Cloudinary API Key: your-api-key
+Cloudinary API Secret: your-api-secret
