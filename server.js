@@ -71,6 +71,7 @@ app.use('/api/v1/user', require('./src/routes/userRoutes'));
 app.use('/api/v1/creator', require('./src/routes/creatorRoutes'));
 app.use('/api/v1/categories', require('./src/routes/categories'));
 app.use('/api/v1/favorites', require('./src/routes/favoriteRoutes'));
+app.use('/api/v1/chats', require('./src/routes/chatRoutes'));
 // app.use('/api/v1/courses', require('./routes/courseRoutes'));
 // app.use('/api/v1/bookings', require('./routes/bookingRoutes'));
 
@@ -101,8 +102,6 @@ app.use((err, _req, res, _next) => {
 });
 
 // Socket.IO Connection Handling
-const Chat = require('./src/models/Chat');
-const Message = require('./src/models/Message');
 
 // Store connected users
 const connectedUsers = new Map();
